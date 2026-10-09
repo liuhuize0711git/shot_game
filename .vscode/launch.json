@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "启动游戏 (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "file": "${workspaceFolder}/index.html",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "--allow-file-access-from-files",
+        "--autoplay-policy=no-user-gesture-required"
+      ]
+    }
+  ]
+}

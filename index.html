@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>STEEL YARD · 炼狱小镇</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- ===================== HUD ===================== -->
+  <div id="hud" class="hud hidden">
+
+    <!-- 小地图 -->
+    <div class="minimap-box">
+      <canvas id="minimap" width="200" height="200"></canvas>
+      <div class="minimap-title">炼狱小镇 · 雷达</div>
+    </div>
+
+    <!-- 顶部数据 -->
+    <div class="top-bar">
+      <div class="stat"><span class="label">击杀</span><span class="value" id="uiKills">0</span></div>
+      <div class="stat"><span class="label">死亡</span><span class="value red" id="uiDeaths">0</span></div>
+      <div class="stat"><span class="label">机器人</span><span class="value" id="uiBots">0</span></div>
+      <div class="stat"><span class="label">得分</span><span class="value" id="uiScore">0</span></div>
+      <div class="stat"><span class="label">时间</span><span class="value" id="uiTime">0:00</span></div>
+    </div>
+    <div id="uiC4" class="c4-timer hidden">C4 <b>60</b>s</div>
+    <div id="uiPlant" class="plant-bar hidden"><div class="plant-fill"></div></div>
+
+    <!-- 击杀播报 -->
+    <div class="killfeed" id="uiKillfeed"></div>
+
+    <!-- 准星 -->
+    <div class="crosshair" id="crosshair">
+      <span class="ch-line ch-t"></span>
+      <span class="ch-line ch-b"></span>
+      <span class="ch-line ch-l"></span>
+      <span class="ch-line ch-r"></span>
+      <span class="ch-dot"></span>
+      <span class="ch-hit" id="hitmarker">✕</span>
+    </div>
+
+    <!-- 左下：生命 + 增益 -->
+    <div class="bottom-left">
+      <div class="health-bar"><div class="health-fill" id="uiHealthFill"></div></div>
+      <div class="health-text"><span id="uiHealth">100</span><span class="hp-label">HP</span></div>
+      <div class="buffs" id="uiBuffs"></div>
+    </div>
+
+    <!-- 右下：武器 -->
+    <div class="bottom-right">
+      <div class="ammo">
+        <span id="uiAmmoMag">42</span><span class="ammo-sep">/</span><span id="uiAmmoReserve">∞</span>
+      </div>
+      <div class="ammo-label" id="uiWeaponName">KX-7 突击步枪</div>
+      <div class="slots">
+        <span class="slot" id="slot1"><b>1</b> 主武器</span>
+        <span class="slot" id="slot3"><b>3</b> 刀</span>
+        <span class="slot" id="slot4"><b>4</b> 手雷 <i id="uiGrenades">3</i></span>
+        <span class="slot" id="slot5"><b>5</b> C4</span>
+        <span class="slot" id="slotE"><b>E</b> 烟雾 <i id="uiSmokes">3</i></span>
+        <span class="slot" id="uiSpeed">移速 80</span>
+      </div>
+    </div>
+
+    <!-- 枪械方案提示 -->
+    <div id="uiReload" class="reload-hint hidden">按 <b>R</b> 换弹</div>
+    <div id="uiBanner" class="banner hidden"></div>
+    <div id="uiToast" class="toast hidden"></div>
+    <div id="uiFlash" class="flash"></div>
+    <div id="uiVignette" class="vignette"></div>
+    <div id="uiSmokeScreen" class="smoke-screen"></div>
+    <div id="uiScope" class="scope hidden">
+      <div class="scope-mask"></div>
+      <div class="scope-h"></div>
+      <div class="scope-v"></div>
+      <div class="scope-ring"></div>
+    </div>
+  </div>
+
+  <!-- ===================== 开始菜单 ===================== -->
+  <div id="menu" class="overlay">
+    <div class="panel wide">
+      <h1>STEEL <span>YARD</span></h1>
+      <p class="sub">炼狱小镇 · 3D 第一人称射击</p>
+
+      <div class="controls">
+        <div class="ctrl"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>前后左右移动</span></div>
+        <div class="ctrl"><kbd>鼠标</kbd><span>转动视角（点击锁定）</span></div>
+        <div class="ctrl"><kbd>空格</kbd><span>跳跃</span></div>
+        <div class="ctrl"><kbd>Ctrl</kbd><span>按住下蹲</span></div>
+        <div class="ctrl"><kbd>Shift</kbd><span>疾跑</span></div>
+        <div class="ctrl"><kbd>左键</kbd><span>射击（按住连发）</span></div>
+        <div class="ctrl"><kbd>右键</kbd><span>狙击枪开镜</span></div>
+        <div class="ctrl"><kbd>R</kbd><span>换弹</span></div>
+        <div class="ctrl"><kbd>1</kbd><span>切换主武器</span></div>
+        <div class="ctrl"><kbd>3</kbd><span>切换匕首（最快移速）</span></div>
+        <div class="ctrl"><kbd>4</kbd><span>破片手雷（范围伤害）</span></div>
+        <div class="ctrl"><kbd>5</kbd><span>C4 炸弹（A/B 包点下包）</span></div>
+        <div class="ctrl"><kbd>E</kbd><span>烟雾弹</span></div>
+        <div class="ctrl"><kbd>F</kbd><span>检视武器（射击可打断）</span></div>
+        <div class="ctrl"><kbd>Q</kbd><span>飞行（需在设置里开启）</span></div>
+        <div class="ctrl"><kbd>Esc</kbd><span>暂停 / 释放鼠标</span></div>
+        <div class="ctrl"><kbd>Shift</kbd><span>下蹲（跳蹲能跳更高）</span></div>
+      </div>
+
+      <div class="weapon-preview" id="weaponPreview"></div>
+
+      <button id="btnStart" class="btn primary">开 始 游 戏</button>
+      <p class="hint">地图：T 出生点 ⇄ 香蕉道 ⇄ B 包点 ⇄ 公寓 ⇄ A 包点；玩家出生在 CT 出生点</p>
+    </div>
+  </div>
+
+  <!-- ===================== 选枪（复活界面） ===================== -->
+  <div id="select" class="overlay hidden">
+    <div class="panel wide">
+      <h1 class="small" id="selectTitle">选 择 主 武 器</h1>
+      <p class="sub" id="selectSub">数字键 1-4 选择，或点击卡片；匕首随时可用（按 3）</p>
+      <div class="weapon-cards" id="weaponCards"></div>
+      <div class="respawn-bar"><div class="respawn-fill" id="respawnFill"></div></div>
+      <p class="hint" id="respawnHint">6 秒后自动复活</p>
+    </div>
+  </div>
+
+  <!-- ===================== 暂停 ===================== -->
+  <div id="pause" class="overlay hidden">
+    <div class="panel">
+      <h1 class="small">已 暂 停</h1>
+      <div class="settings">
+        <label>鼠标灵敏度 <output id="outSens">1.00</output>
+          <input id="setSens" type="range" min="0.15" max="4" step="0.05" value="1" />
+        </label>
+        <label>转向平滑（越大越顺滑）<output id="outSmooth">0.50</output>
+          <input id="setSmooth" type="range" min="0" max="1" step="0.05" value="0.5" />
+        </label>
+        <label>音量 <output id="outVol">50</output>
+          <input id="setVol" type="range" min="0" max="100" step="1" value="50" />
+        </label>
+        <label>视野 FOV <output id="outFov">78</output>
+          <input id="setFov" type="range" min="60" max="110" step="1" value="78" />
+        </label>
+        <label>机器人数量（复活上限）<output id="outBots">8</output>
+          <input id="setBots" type="range" min="2" max="16" step="1" value="8" />
+        </label>
+        <label class="checkbox">
+          <input id="setMinimapBots" type="checkbox" /> 小地图显示机器人位置
+        </label>
+        <label class="checkbox">
+          <input id="setLowQ" type="checkbox" /> 低配模式（关闭阴影，帧率更高）
+        </label>
+        <label class="checkbox">
+          <input id="setFly" type="checkbox" /> 允许飞行（游戏中按 Q 切换，空格上升）
+        </label>
+      </div>
+      <button id="btnResume" class="btn primary">继 续 游 戏</button>
+      <button id="btnRestart1" class="btn ghost">重新开始</button>
+    </div>
+  </div>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="src/utils.js"></script>
+  <script src="src/audio.js"></script>
+  <script src="src/world.js"></script>
+  <script src="src/nav.js"></script>
+  <script src="src/effects.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/weapon.js"></script>
+  <script src="src/enemies.js"></script>
+  <script src="src/gadgets.js"></script>
+  <script src="src/pickups.js"></script>
+  <script src="src/minimap.js"></script>
+  <script src="src/hud.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

@@ -14,3 +14,6 @@
 | 版本 | 文件 | SHA-256 |
 | --- | --- | --- |
 | 0.5.1 | [drifting_age_v0.5.1.zip](drifting_age_v0.5.1.zip) | `b0cac9e54d195eebc7b19964ebe399ec7dc11c178f4094e3f7a0bf07590e3674` |
+| 0.5.2 | [drifting_age_v0.5.2.zip](drifting_age_v0.5.2.zip) | `929e428a987887d509b251115e94105691124ca048540ea68d2de8eaa434b70c` |
+
+最新版本：[0.5.2 更新说明](v0.5.2-notes.md)。

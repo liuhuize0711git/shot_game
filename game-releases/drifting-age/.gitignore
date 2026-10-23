@@ -1,0 +1,2 @@
+# Keep versioned game archives despite the repository-wide *.zip rule.
+!*.zip

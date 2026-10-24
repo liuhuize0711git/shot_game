@@ -18,3 +18,10 @@
 | 0.6.0 | [drifting_age_v0.6.0.zip](drifting_age_v0.6.0.zip) | `c98cbc52c44ddd9f40e444c0289b82614418763e3505acc3e24c7fe4b31ccbd8` |
 
 最新版本：[0.6.0 更新说明](v0.6.0-notes.md)。
+
+## v0.6.0 重建说明
+
+- [供 AI 重建的完整文字规格](specifications/drifting-age-v0.6.0-recreation.md)：规则、所有材料/配方、模型比例与尺寸、控制与相机、界面、生态、音频、保存/联机、已知差异及验收场景。
+- [结构化参数附件](specifications/drifting-age-v0.6.0-parameters.json)：精确数值、三首音乐音符及基准源码校验和。
+
+复刻时将两份文件一起交给 AI；精确视觉对照使用 v0.6.0 包内截图。文档仅记录该版实际行为，未修改已归档游戏包。

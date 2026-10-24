@@ -1,0 +1,1245 @@
+{
+  "schema": "drifting-age-recreation-1.0",
+  "version": "0.6.0",
+  "date": "2026-10-24",
+  "referenceCommit": "b7e28b879e56cecee6caffdf5b874f2e74f44abd",
+  "archiveSha256": "c98cbc52c44ddd9f40e444c0289b82614418763e3505acc3e24c7fe4b31ccbd8",
+  "usage": "与 recreation.md 全文一起使用。这里记录现版，不把名称表或未接入辅助函数当成功能。长度默认为米，map坐标另标。",
+  "sourceSha256": {
+    "server.js": "13b3a420ddddcf65939ce1de28faf87252e2ca2cdea3634bb7a926f3f659f6a7",
+    "public/index.html": "ccca3b220c041866a315b6a3ef0b1442f4c8c13b6b507c559d68a8f4a3897141",
+    "public/avatar.js": "5f0f965d4519ec3ad5c5f035b4d190ce40ff6e7eafe9fa845bb39ae28da312f7",
+    "public/building.js": "ace12006ee3351c94233d41de017f5775da59e9838ff7743e85fb005c37b6323",
+    "public/drift.js": "515f83782149fc65256244fb4083fe323e9151b6892b9c4b77f73655d11f8261",
+    "public/items.js": "e5ce00a7ec071b673aebde6d731c740eb2b7e1f3baca84753549a72ee44c71d3",
+    "public/movement.js": "26dad1cb4d8aa44290c8f592336b0cc77311715bcaaf8b2f875aa4493770c423",
+    "public/music.js": "9c03c158199d09287f4b820cfe041da986e61be570e808022ceb4e1ee99d7823",
+    "public/targeting.js": "1ecc4e4e80ce298f64207af952b4b0862f6a8681977ceba1a102c645de472451",
+    "public/world-renderer.js": "f11b9a10164f87d1bec8d2b9b8b77e2ff1b916af0c9d25127936cf02ec5eb978",
+    "public/world.js": "34855998b53d64ce86eb34a422bcb1fb6f545c0c9725f65cd3915c24b0ed5b30"
+  },
+  "coordinates": {
+    "mapOrigin": [
+      500,
+      350
+    ],
+    "mapUnitsPerMeter": 30,
+    "renderX": "(mapX-500)/30",
+    "renderZ": "(mapY-350)/30",
+    "bounds": {
+      "minX": -800,
+      "maxX": 1900,
+      "minY": -600,
+      "maxY": 1700
+    }
+  },
+  "initialPlayer": {
+    "mapPositions": [
+      [
+        480,
+        350
+      ],
+      [
+        520,
+        350
+      ]
+    ],
+    "altitude": 0.52,
+    "verticalVelocity": 0,
+    "hp": 100,
+    "hunger": 100,
+    "thirst": 100,
+    "oxygen": 100,
+    "inventory": {},
+    "tools": {},
+    "hotbar": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "selectedSlot": 0,
+    "colors": [
+      "#ffce74",
+      "#83e0d1"
+    ]
+  },
+  "movement": {
+    "deck": 0.52,
+    "surface": -0.34,
+    "underside": -0.72,
+    "bottom": -7.25,
+    "groundFallAcceleration": -2.6,
+    "ascendAcceleration": 2.8,
+    "sinkAcceleration": -1.6,
+    "maxAscendVelocity": 1.4,
+    "maxSinkVelocity": -1.35,
+    "surfaceGrace": 0.85,
+    "speedsMapPerSecond": {
+      "raft": 142,
+      "island": 96,
+      "surface": 82,
+      "diving": 56
+    },
+    "sprintMultiplier": 1.55,
+    "maxFrameDt": 0.25,
+    "maxSubstep": 0.008333333333333333,
+    "divingThreshold": -1.05,
+    "boarding": {
+      "seconds": 1.2,
+      "liftFraction": 0.55,
+      "maxAutoFaceDistanceMap": 30,
+      "edgeMap": 24,
+      "maxTangentMap": 28,
+      "landingTangentMap": 18,
+      "landingNormalMap": 14,
+      "surfaceTolerance": 0.03,
+      "directionDotMin": 0.3,
+      "islandAutoRadiusMax": 1.04,
+      "islandLandingRadius": 0.94
+    }
+  },
+  "camera": {
+    "fovYDegrees": 60,
+    "near": 0.1,
+    "far": 320,
+    "initialYaw": 0.68,
+    "initialPitch": 0.42,
+    "initialDistance": 9.2,
+    "pitchRange": [
+      -1.05,
+      1.2
+    ],
+    "distanceRange": [
+      5.8,
+      15
+    ],
+    "wheelStep": 0.8,
+    "yawPerPixel": -0.0027,
+    "pitchPerPixel": 0.0022,
+    "shoulderOffset": 0.85,
+    "focusHeights": {
+      "ground": 1.05,
+      "surface": 0.78,
+      "diving": 0.24
+    },
+    "distanceMultipliers": {
+      "ground": 1,
+      "surface": 0.82,
+      "diving": 0.7
+    },
+    "divingAscendPitch": -0.72,
+    "divingPitchRange": [
+      -0.82,
+      0.18
+    ],
+    "divingEyeHeightRange": [
+      -8.2,
+      -0.28
+    ]
+  },
+  "targeting": {
+    "circleDiameterVh": 14,
+    "projectionOffsetMax": 0.14,
+    "reachMeters": 2.8,
+    "occlusionStep": 0.06,
+    "outlineScale": 1.16,
+    "outlineColor": [
+      1,
+      0.84,
+      0.35
+    ]
+  },
+  "recipes": {
+    "hook": {
+      "name": "塑料钩",
+      "cost": {
+        "plank": 1,
+        "plastic": 2
+      },
+      "tool": true
+    },
+    "purifier": {
+      "name": "海水淡化器",
+      "cost": {
+        "plank": 6,
+        "plastic": 4,
+        "leaf": 3
+      },
+      "station": true
+    },
+    "grill": {
+      "name": "简易烤架",
+      "cost": {
+        "plank": 4,
+        "scrap": 2
+      },
+      "station": true
+    },
+    "net": {
+      "name": "漂流收集网",
+      "cost": {
+        "plank": 5,
+        "leaf": 4
+      },
+      "station": true
+    },
+    "sail": {
+      "name": "帆与桅杆",
+      "cost": {
+        "plank": 6,
+        "leaf": 4
+      },
+      "station": true
+    },
+    "chest": {
+      "name": "储物箱",
+      "cost": {
+        "plank": 4,
+        "plastic": 2
+      },
+      "station": true
+    },
+    "spear": {
+      "name": "金属尖矛",
+      "cost": {
+        "plank": 3,
+        "scrap": 3
+      },
+      "tool": true
+    },
+    "axe": {
+      "name": "石斧",
+      "cost": {
+        "plank": 3,
+        "stone": 2
+      },
+      "tool": true
+    },
+    "rod": {
+      "name": "钓鱼竿",
+      "cost": {
+        "plank": 3,
+        "leaf": 2
+      },
+      "tool": true
+    },
+    "bottle": {
+      "name": "水瓶",
+      "cost": {
+        "plastic": 3
+      },
+      "tool": true
+    },
+    "armor": {
+      "name": "拼接护甲",
+      "cost": {
+        "scrap": 5,
+        "leaf": 3
+      },
+      "tool": true
+    }
+  },
+  "building": {
+    "gridMap": 48,
+    "cellMeters": 1.6,
+    "initialGridIndices": [
+      -1,
+      0,
+      1
+    ],
+    "reachMeters": 4.5,
+    "costs": {
+      "build": {
+        "plank": 4,
+        "plastic": 2
+      },
+      "armor": {
+        "scrap": 4,
+        "plank": 2
+      },
+      "repair": {
+        "plank": 2
+      }
+    },
+    "hp": 100,
+    "armoredHp": 180,
+    "maxStructuresPerCell": 1,
+    "rotationQuarterTurns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "demolitionRefund": {
+      "plank": 2,
+      "plastic": 1
+    },
+    "armoredAdditionalRefund": {
+      "scrap": 2
+    }
+  },
+  "items": {
+    "materialIds": [
+      "plank",
+      "plastic",
+      "leaf",
+      "scrap",
+      "stone",
+      "potato",
+      "raw_fish",
+      "food",
+      "water",
+      "metal",
+      "copper",
+      "seaweed"
+    ],
+    "reservedOnly": [
+      "glass"
+    ],
+    "naturalYields": {
+      "plank": 2,
+      "leaf": 2,
+      "other": 1
+    },
+    "barrelContents": {
+      "plank": 2,
+      "plastic": 1,
+      "leaf": 2,
+      "scrap": 1
+    },
+    "barrelPotatoChance": 0.3,
+    "seaweedYield": 2,
+    "ordinaryDropCount": 1,
+    "overflowDrop": "entire held stack",
+    "dropForwardMap": 15
+  },
+  "survival": {
+    "foodGain": 32,
+    "potatoGain": 14,
+    "waterGain": 38,
+    "oxygenDrain": 8.5,
+    "oxygenRecovery": 16,
+    "drowningDamage": 5,
+    "solo": {
+      "hungerDrain": 0.12,
+      "thirstDrain": 0.18,
+      "starvationDamage": 2.5,
+      "respawn": [
+        70,
+        60,
+        60
+      ],
+      "sharkDamage": 8,
+      "sharkReach": 1.25,
+      "sharkFirstAttack": 40,
+      "sharkAttackInterval": 42
+    },
+    "coop": {
+      "hungerDrain": 0.13,
+      "thirstDrain": 0.2,
+      "starvationDamage": 2.8,
+      "respawn": [
+        55,
+        35,
+        35
+      ],
+      "sharkDamage": 9,
+      "armoredSharkDamage": 3.5,
+      "spearDamageMultiplier": 0.7,
+      "sharkReachMap": 34,
+      "sharkFirstAttack": 24,
+      "sharkAttackInterval": 35
+    },
+    "spearHitDamage": 22,
+    "spearHitReachMap": 95,
+    "sharkTileDamage": 25,
+    "fishCooldownSeconds": 5
+  },
+  "drift": {
+    "velocityMap": [
+      3,
+      18
+    ],
+    "spawnInterval": 2.5,
+    "maxAmbient": 60,
+    "spawnX": "350+((n*73)%280)",
+    "spawnY": 110,
+    "typeCycle": [
+      "plank",
+      "plastic",
+      "leaf",
+      "plank",
+      "scrap",
+      "barrel",
+      "stone"
+    ],
+    "initial": [
+      [
+        "plank",
+        440,
+        267
+      ],
+      [
+        "plastic",
+        480,
+        267
+      ],
+      [
+        "leaf",
+        525,
+        267
+      ],
+      [
+        "scrap",
+        565,
+        267
+      ],
+      [
+        "barrel",
+        590,
+        325
+      ],
+      [
+        "stone",
+        410,
+        325
+      ]
+    ],
+    "ambientRetention": {
+      "minXExclusive": -1000,
+      "maxXExclusive": 2400,
+      "maxYExclusive": 1050
+    },
+    "netCaptureRadiusMap": 30
+  },
+  "islands": [
+    {
+      "id": "palm-cove",
+      "name": "棕榈沙洲",
+      "biome": "palm",
+      "x": 740,
+      "y": 290,
+      "radius": 120,
+      "rx": 142,
+      "rz": 110,
+      "height": 0.85,
+      "seed": 1.2
+    },
+    {
+      "id": "green-meadow",
+      "name": "青岚草甸岛",
+      "biome": "meadow",
+      "x": -140,
+      "y": 650,
+      "radius": 220,
+      "rx": 230,
+      "rz": 180,
+      "height": 1.9,
+      "seed": 2.6
+    },
+    {
+      "id": "pine-ridge",
+      "name": "松风高地岛",
+      "biome": "ridge",
+      "x": 1190,
+      "y": 950,
+      "radius": 280,
+      "rx": 285,
+      "rz": 220,
+      "height": 3,
+      "seed": 4.2
+    }
+  ],
+  "tree": {
+    "initialHp": 3,
+    "regrowSeconds": 180,
+    "chopCooldown": 0.45,
+    "chopReachMap": 84,
+    "yield": {
+      "plank": 4,
+      "leaf": 2
+    },
+    "counts": {
+      "palm": 4,
+      "meadow": 7,
+      "ridge": 9
+    },
+    "angle": "k*2.399+seed",
+    "radius": ".31+(k%3)*.16"
+  },
+  "fauna": {
+    "names": {
+      "goat": "山羊",
+      "horse": "野马",
+      "boar": "野猪",
+      "gull": "海鸥",
+      "parrot": "鹦鹉"
+    },
+    "islandSpecies": {
+      "palm": [
+        "gull",
+        "parrot"
+      ],
+      "meadow": [
+        "goat",
+        "horse",
+        "gull",
+        "goat"
+      ],
+      "ridge": [
+        "boar",
+        "goat",
+        "boar",
+        "parrot",
+        "gull"
+      ]
+    },
+    "speedMap": {
+      "bird": 34,
+      "horse": 24,
+      "boar": 28,
+      "goat": 18
+    },
+    "boarChaseRangeMap": 95,
+    "boarAttackRangeMap": 15,
+    "boarDamagePerSecond": 5
+  },
+  "rendering": {
+    "palette": {
+      "water": [
+        0.035,
+        0.31,
+        0.4
+      ],
+      "wood": [
+        0.48,
+        0.27,
+        0.13
+      ],
+      "wood2": [
+        0.66,
+        0.39,
+        0.2
+      ],
+      "woodLight": [
+        0.79,
+        0.54,
+        0.3
+      ],
+      "rope": [
+        0.24,
+        0.16,
+        0.1
+      ],
+      "leaf": [
+        0.12,
+        0.48,
+        0.28
+      ],
+      "sand": [
+        0.76,
+        0.65,
+        0.42
+      ],
+      "grass": [
+        0.25,
+        0.48,
+        0.24
+      ],
+      "skin": [
+        0.88,
+        0.61,
+        0.39
+      ],
+      "shirt": [
+        0.95,
+        0.56,
+        0.19
+      ],
+      "blue": [
+        0.13,
+        0.55,
+        0.62
+      ],
+      "dark": [
+        0.08,
+        0.17,
+        0.2
+      ],
+      "white": [
+        0.85,
+        0.9,
+        0.86
+      ],
+      "metal": [
+        0.44,
+        0.55,
+        0.59
+      ],
+      "plastic": [
+        0.2,
+        0.79,
+        0.85
+      ],
+      "red": [
+        0.76,
+        0.22,
+        0.18
+      ],
+      "shark": [
+        0.37,
+        0.49,
+        0.52
+      ],
+      "orange": [
+        0.92,
+        0.42,
+        0.15
+      ],
+      "purple": [
+        0.44,
+        0.31,
+        0.62
+      ],
+      "seabed": [
+        0.2,
+        0.25,
+        0.24
+      ],
+      "rock": [
+        0.28,
+        0.33,
+        0.33
+      ],
+      "coral": [
+        0.83,
+        0.39,
+        0.25
+      ],
+      "copper": [
+        0.74,
+        0.39,
+        0.2
+      ],
+      "seaweed": [
+        0.1,
+        0.37,
+        0.24
+      ],
+      "gold": [
+        1,
+        0.72,
+        0.24
+      ],
+      "sky": [
+        0.35,
+        0.65,
+        0.78
+      ]
+    },
+    "light": [
+      -0.45,
+      0.86,
+      0.25
+    ],
+    "ambient": 0.48,
+    "diffuse": 0.58,
+    "waterSize": 180,
+    "waterGrid": 100,
+    "seabedBase": -8.08,
+    "seabedGrid": 90,
+    "skyDiameter": 260,
+    "avatarSphereSegments": [
+      16,
+      20
+    ],
+    "cylinderSegments": 16,
+    "coneSegments": 12,
+    "islandAngularSegments": 56,
+    "islandRadialRings": 22
+  },
+  "audio": {
+    "defaultMusicVolume": 0.18,
+    "defaultSfxVolume": 0.55,
+    "musicGainMultiplier": 0.65,
+    "tracks": [
+      {
+        "title": "晨光轻舟",
+        "bpm": 84,
+        "bars": 16,
+        "instrument": "pluck",
+        "transpose": 0,
+        "melody": [
+          [
+            72,
+            null,
+            76,
+            79,
+            76,
+            74,
+            72,
+            null
+          ],
+          [
+            74,
+            76,
+            77,
+            null,
+            76,
+            74,
+            72,
+            null
+          ],
+          [
+            69,
+            null,
+            72,
+            76,
+            79,
+            76,
+            72,
+            69
+          ],
+          [
+            71,
+            74,
+            79,
+            null,
+            77,
+            74,
+            71,
+            null
+          ],
+          [
+            72,
+            76,
+            79,
+            84,
+            79,
+            null,
+            76,
+            72
+          ],
+          [
+            77,
+            null,
+            81,
+            79,
+            77,
+            76,
+            74,
+            null
+          ],
+          [
+            76,
+            79,
+            81,
+            null,
+            79,
+            76,
+            72,
+            69
+          ],
+          [
+            74,
+            71,
+            67,
+            null,
+            71,
+            74,
+            79,
+            null
+          ],
+          [
+            79,
+            null,
+            76,
+            72,
+            74,
+            76,
+            79,
+            null
+          ],
+          [
+            81,
+            79,
+            77,
+            null,
+            76,
+            77,
+            81,
+            null
+          ],
+          [
+            81,
+            null,
+            79,
+            76,
+            72,
+            76,
+            79,
+            76
+          ],
+          [
+            74,
+            77,
+            79,
+            null,
+            77,
+            74,
+            71,
+            null
+          ],
+          [
+            72,
+            74,
+            76,
+            79,
+            84,
+            null,
+            79,
+            76
+          ],
+          [
+            77,
+            76,
+            74,
+            null,
+            72,
+            74,
+            77,
+            null
+          ],
+          [
+            76,
+            null,
+            72,
+            69,
+            72,
+            76,
+            74,
+            72
+          ],
+          [
+            71,
+            74,
+            72,
+            null,
+            72,
+            null,
+            null,
+            null
+          ]
+        ],
+        "duration": 46.51428571428571
+      },
+      {
+        "title": "午后海风",
+        "bpm": 100,
+        "bars": 16,
+        "instrument": "marimba",
+        "transpose": 5,
+        "melody": [
+          [
+            72,
+            76,
+            null,
+            79,
+            76,
+            null,
+            74,
+            72
+          ],
+          [
+            77,
+            null,
+            76,
+            74,
+            72,
+            74,
+            77,
+            null
+          ],
+          [
+            76,
+            79,
+            null,
+            81,
+            79,
+            76,
+            72,
+            null
+          ],
+          [
+            74,
+            null,
+            71,
+            67,
+            71,
+            74,
+            79,
+            null
+          ],
+          [
+            79,
+            76,
+            72,
+            null,
+            76,
+            79,
+            84,
+            null
+          ],
+          [
+            81,
+            77,
+            74,
+            null,
+            77,
+            81,
+            79,
+            null
+          ],
+          [
+            81,
+            null,
+            79,
+            76,
+            72,
+            76,
+            79,
+            null
+          ],
+          [
+            77,
+            74,
+            71,
+            null,
+            74,
+            79,
+            77,
+            null
+          ],
+          [
+            76,
+            72,
+            76,
+            79,
+            null,
+            84,
+            79,
+            76
+          ],
+          [
+            77,
+            74,
+            77,
+            81,
+            null,
+            79,
+            77,
+            74
+          ],
+          [
+            76,
+            72,
+            69,
+            null,
+            72,
+            76,
+            79,
+            81
+          ],
+          [
+            79,
+            77,
+            74,
+            null,
+            71,
+            74,
+            77,
+            null
+          ],
+          [
+            79,
+            null,
+            76,
+            72,
+            74,
+            76,
+            79,
+            null
+          ],
+          [
+            77,
+            81,
+            79,
+            77,
+            76,
+            74,
+            72,
+            null
+          ],
+          [
+            76,
+            72,
+            69,
+            null,
+            72,
+            76,
+            74,
+            null
+          ],
+          [
+            71,
+            74,
+            72,
+            null,
+            null,
+            72,
+            null,
+            null
+          ]
+        ],
+        "duration": 39.199999999999996
+      },
+      {
+        "title": "星港晚潮",
+        "bpm": 76,
+        "bars": 16,
+        "instrument": "flute",
+        "transpose": -5,
+        "melody": [
+          [
+            79,
+            null,
+            null,
+            76,
+            74,
+            null,
+            72,
+            null
+          ],
+          [
+            77,
+            null,
+            79,
+            null,
+            81,
+            null,
+            79,
+            null
+          ],
+          [
+            76,
+            null,
+            72,
+            null,
+            69,
+            null,
+            72,
+            null
+          ],
+          [
+            74,
+            null,
+            79,
+            null,
+            77,
+            null,
+            74,
+            null
+          ],
+          [
+            76,
+            null,
+            79,
+            null,
+            84,
+            null,
+            79,
+            null
+          ],
+          [
+            81,
+            null,
+            null,
+            79,
+            77,
+            null,
+            74,
+            null
+          ],
+          [
+            76,
+            null,
+            79,
+            null,
+            81,
+            null,
+            76,
+            null
+          ],
+          [
+            74,
+            null,
+            71,
+            null,
+            67,
+            null,
+            null,
+            null
+          ],
+          [
+            72,
+            null,
+            76,
+            null,
+            79,
+            null,
+            76,
+            null
+          ],
+          [
+            77,
+            null,
+            81,
+            null,
+            79,
+            null,
+            77,
+            null
+          ],
+          [
+            76,
+            null,
+            null,
+            72,
+            69,
+            null,
+            72,
+            null
+          ],
+          [
+            74,
+            null,
+            77,
+            null,
+            79,
+            null,
+            77,
+            null
+          ],
+          [
+            76,
+            null,
+            74,
+            null,
+            72,
+            null,
+            76,
+            null
+          ],
+          [
+            77,
+            null,
+            76,
+            null,
+            74,
+            null,
+            72,
+            null
+          ],
+          [
+            69,
+            null,
+            72,
+            null,
+            76,
+            null,
+            74,
+            null
+          ],
+          [
+            71,
+            null,
+            72,
+            null,
+            72,
+            null,
+            null,
+            null
+          ]
+        ],
+        "duration": 51.32631578947368
+      }
+    ],
+    "chords": [
+      [
+        48,
+        52,
+        55
+      ],
+      [
+        53,
+        57,
+        60
+      ],
+      [
+        45,
+        48,
+        52
+      ],
+      [
+        43,
+        47,
+        50
+      ]
+    ],
+    "arpeggioIndices": [
+      0,
+      1,
+      2,
+      1,
+      0,
+      2,
+      1,
+      2
+    ],
+    "schedulerIntervalMs": 100,
+    "lookaheadSeconds": 0.75
+  },
+  "persistence": {
+    "saveKey": "driftingAge3dSave",
+    "backupKey": "driftingAge3dSaveBackup",
+    "audioKey": "driftingAgeAudio",
+    "bindingsKey": "driftingAgeBindings",
+    "soloSaveInterval": 12,
+    "coopPersistentAcrossRestart": false
+  },
+  "networking": {
+    "maxPlayers": 2,
+    "serverTickMs": 100,
+    "inputIntervalSeconds": 0.06,
+    "authority": "server",
+    "selection": "explicit select action"
+  },
+  "unimplemented": [
+    "hook throwing/reeling",
+    "sail propulsion",
+    "chest inventory UI",
+    "tool durability",
+    "smelting",
+    "animal taming/riding/breeding",
+    "full decorative-object collision",
+    "camera collision avoidance",
+    "multiplayer persistent accounts/world database"
+  ]
+}
